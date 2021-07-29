@@ -1,12 +1,12 @@
-import { render } from '@testing-library/react';
 import React from 'react';
+import { SHeader } from '../styles';
 
-function Header(){
-    return(
-        <header>
-            this is located at the very top of the page
-        </header>
-    )
-}
+const Header = () => {
+    return (
+        <SHeader>
+            <h1>THE Rain Checker</h1>
+        </SHeader>
+    );
+};
 
 export default Header;

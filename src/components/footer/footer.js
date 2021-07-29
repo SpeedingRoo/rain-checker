@@ -1,11 +1,11 @@
-import { render } from '@testing-library/react';
 import React from 'react';
+import { SFooter } from '../styles';
 
-function Footer(){
+const Footer = () => {
     return (
-        <footer>
-            this is the footer, copyright reserved
-        </footer>
+    <SFooter>
+        Copyright Reserved, WANGDOM Pty Ltd
+    </SFooter>
     )
 }
 
