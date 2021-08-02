@@ -17,8 +17,7 @@ const SBody = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: calc(100% - 50px);
-    position:relative;
+    flex:1;
     background: rgb(1,217,255);
     background: linear-gradient(180deg, rgba(1,217,255,1) 0%, rgba(82,189,228,1) 25%, rgba(40,183,213,1) 50%, rgba(0,138,222,1) 75%, rgba(23,67,184,1) 100%);
     & > section > * {
@@ -57,6 +56,7 @@ const SFooter = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: auto;
     height: 50px;
     color: red;
     background-color: #eee;
