@@ -7,6 +7,7 @@ import Main from './pages/main/index';
 import AboutPage from './pages/about';
 import ProjectsPage from './pages/projects';
 import ContactPage from './pages/contact';
+import './App.css';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         {/* page header */}
         <Header />
         {/* navigation */}
-        <Router>
+        <Router className='main-content'>
           {/* Navigation里面包含了 Link 相当于提供了一个头绪让你可以顺着这个Link转到合适的页面 */}
           <Navigation />
           {/* 在switch里面是放具体的页面供选择，这些页面分别被放在对应的Route里面，通过Route的 path 属性就和上面Link里面的 to 属性联系

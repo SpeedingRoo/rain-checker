@@ -6,9 +6,14 @@ const SHeader = styled.header`
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    width:100%;
+    height: 300px;
     margin:0;
+    
     color: white;
     font-family: 'Zen Loop', cursive;
+    font-size: ;
     background: rgb(12,8,70);
     background: linear-gradient(163deg, rgba(12,8,70,1) 0%, rgba(22,22,125,1) 28%, rgba(23,67,184,1) 58%, rgba(0,212,255,1) 100%);
 `;
@@ -18,9 +23,12 @@ const SBody = styled.main`
     justify-content: center;
     align-items: center;
     flex:1;
+
+    width:720px;
     background: rgb(1,217,255);
     background: linear-gradient(180deg, rgba(1,217,255,1) 0%, rgba(82,189,228,1) 25%, rgba(40,183,213,1) 50%, rgba(0,138,222,1) 75%, rgba(23,67,184,1) 100%);
-    & > section > * {
+    
+    & > section > aside {
         flex-flow: row;
         justify-content:center;
         align-items: center;
@@ -28,40 +36,77 @@ const SBody = styled.main`
         padding: 10px 0 10px;
         margin: 0 auto;
     }
+
+    border: 2px solid rgba(0,212,255,1);
+    border-radius: 5px;
 `;
 
 const SList = styled.ul`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #eee;
-    margin:0;
+
+    background-color: rgba(255,255,255,2,.3);
+
+    width:720px;
+    margin:10;
     padding: 0;
+
+    border:1px solid yellow;
 `;
 
 const SListItem = styled.li`
     display: inline-block;
-    width: 70px;
+    width: 87px;
     height: 35px;
-    background-color: #bbb;
+
+
+
     text-align: center;
     padding-top: 15px;
     /* 把导航列表内每个链接文字的下划线去掉 */
     & > a {
         text-decoration: none;
+        font-weight: bold;
+        word-break: keep-all;
+        color: rgba(0,138,222,1);
     }
 `;
 
+const SForm = styled.form`
+    background-color: white;
+    opacity: .5;
+    display: flex;
+    flex-direction:column;
+`;
+
+const SInput = styled.input`
+    background-color: rgb(1,217,255);
+    border:none;
+    border-radius:5px;
+    width: 80%;
+    height: 50px;
+`;
+
+const SButton = styled.button`
+    width:80px;
+    height: 50px;
+    border-radius: 5px;
+`;
+
 const SFooter = styled.footer`
+    position:absolute;
+    bottom: 0;
+    width:100%;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: auto;
-    height: 50px;
     color: red;
-    background-color: #eee;
+    background-color: rgb;
     font-family: 'Zen Loop', cursive;
     font-family: 'Zen Tokyo Zoo', cursive;
 `;
 
-export { SHeader, SBody, SFooter, SList, SListItem };
+export { SHeader, SBody,SForm, SInput, SButton, SFooter, SList, SListItem };

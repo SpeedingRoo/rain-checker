@@ -1,26 +1,60 @@
-import React from 'react';
-import { SBody } from '../../components/styles';
-import logo from '../../logo.svg';
+import React, { useState, useEffect } from 'react';
+import { SBody, SForm, SInput, SButton } from '../../components/styles';
 
 const MainPage = () => {
+
+    const [city,setCity] = useState();
+    const [counter,setCounter] = useState(0)
+
+    function minus() {
+        setCounter(counter-1);
+    }        
+
+    function plus() {
+        setCounter(counter+1);
+    }
+
+    function reset() {
+        setCounter(0);
+    }
+
+    useEffect(()=>{
+        
+    })
+
+
     return (
         <SBody className='main-page'>
             <section>
-                <p>
-                    lorem epsorem blah blah blah xiao mo xian miao miao wu
-                </p>
+                <SForm>
+                    <SInput type='text' value=''/>
+                </SForm>
             </section>
             <section>
+            <SButton onClick={setCity} >Check</SButton>
+                <span>{city}</span>
                 <aside>
-                    <h1>
-                        here's aside content
+                    <h1> 
+                        here's aside content in the Section 2 Content
                     </h1>
                 </aside>
+                <button onClick={plus}>
+                    PLUS + 
+                </button>
+                <button onClick={reset}>
+                    / refresh /
+                </button>
+                <button onClick={minus}>
+                    MINUS - 
+                </button>
             </section>
             <section>
-                <img src={logo} className="App-logo" alt="logo" />
+
                 <p>
-                    Edit <code>src/App.js</code> and save to reload.
+                   Section 3 Content.
+                </p>
+                <p>
+                    clicked <span>{counter}</span> times
                 </p>
             </section>
             <section>
@@ -30,7 +64,7 @@ const MainPage = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    Learn THE React
+                    Section 4 Content
                 </a>
             </section>
         </SBody>
