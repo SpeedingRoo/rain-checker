@@ -1,10 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { SBody, SForm, SInput, SButton } from '../../components/styles';
+import axios from 'axios';
+import Card from '../../components/card';
 
 const MainPage = () => {
 
-    const [city,setCity] = useState();
+    const [city,setCity] = useState('');
     const [counter,setCounter] = useState(0)
+    const [weatherData,setWeatherData] = useState('');
+    const APIkey = 'f620a018d0f4d826614d158f97a3f828';
+    const APIcallUrl = `api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`
+
+    function getInput(e) {
+        setCity(e.target.value);
+    }
+
+    function clearField(e){
+        e.target.value=city;
+    }
+
+    function myOnClick() {
+
+            axios.get(APIcallUrl).then(
+                res=>{
+                    setWeatherData(res.json());
+                    console.log(`The weather in Rio is : ${weatherData}`);
+                    }
+                )
+            
+            window.alert(city)
+    }
 
     function minus() {
         setCounter(counter-1);
@@ -18,54 +43,41 @@ const MainPage = () => {
         setCounter(0);
     }
 
-    useEffect(()=>{
-        
-    })
-
-
     return (
         <SBody className='main-page'>
             <section>
                 <SForm>
-                    <SInput type='text' value=''/>
+                    <SInput type='text' 
+                            defaultValue='start typying here'
+                            onChange={getInput}
+                            onFocus={clearField}
+                    />
                 </SForm>
+                <SButton type='button' onClick={myOnClick} >Check</SButton>
             </section>
             <section>
-            <SButton onClick={setCity} >Check</SButton>
                 <span>{city}</span>
-                <aside>
-                    <h1> 
-                        here's aside content in the Section 2 Content
-                    </h1>
-                </aside>
-                <button onClick={plus}>
-                    PLUS + 
-                </button>
-                <button onClick={reset}>
-                    / refresh /
-                </button>
-                <button onClick={minus}>
-                    MINUS - 
-                </button>
             </section>
             <section>
-
-                <p>
-                   Section 3 Content.
-                </p>
+                <SButton onClick={minus}>
+                    MINUS - 
+                </SButton>
+                <SButton onClick={reset}>
+                    / refresh /
+                </SButton>
+                <SButton onClick={plus}>
+                    PLUS + 
+                </SButton>
+            </section>
+            <section>
+                <Card city='Beijing' temp='-10'/>
+                <Card city='London' temp='5' />
+            </section>
+            <section>
                 <p>
                     clicked <span>{counter}</span> times
                 </p>
-            </section>
-            <section>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Section 4 Content
-                </a>
+                <p>the weather data is {weatherData}</p>
             </section>
         </SBody>
     );
