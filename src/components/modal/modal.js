@@ -7,6 +7,7 @@ const Modal = (props)=>{
     const [showModal, setShowModal] = useState(props.shown);
 
     const closeModal = () => {
+
         setShowModal(false);
     }
 
