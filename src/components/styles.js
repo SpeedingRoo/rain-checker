@@ -7,7 +7,7 @@ const SHeader = styled.header`
     align-items: center;
     text-align: center;
 
-    width:100%;
+    min-width:720%;
     height: 300px;
     margin:0;
     
@@ -23,30 +23,33 @@ const SBody = styled.main`
     align-items: center;
     flex:1;//so that the entire SBody component can expand to the whole father container
 
-    padding: 10px;
+    padding: 20px;
 
     width:720px;
     background: rgb(1,217,255);
     background: linear-gradient(180deg, rgba(1,217,255,1) 0%, rgba(82,189,228,1) 25%, rgba(40,183,213,1) 50%, rgba(0,138,222,1) 75%, rgba(23,67,184,1) 100%);
     
-    & > section {
+    & a {
         display: flex;
+        justify-content: start;
         flex-wrap: wrap;
-        padding: 10px 0 5px;
-        border-bottom: 1px solid green;
-    }
-
-    & > section > aside {
-        flex-flow: row;
-        justify-content:center;
-        align-items: center;
-        text-align: center;
         padding: 10px 0 10px;
-        margin: 0 auto;
+        margin-bottom: 10px;
+        border-bottom: 1px solid green;
+        background-color: red;
     }
 
     border: 2px solid rgba(0,212,255,1);
     border-radius: 5px;
+`;
+
+const SPart = styled.section`
+    display: flex;
+    flex-direction: ${props=>props.vertical? 'column' : 'row'};
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px;
+    border: 1px solid black;
 `;
 
 const SFooter = styled.footer`
@@ -95,20 +98,23 @@ const SListItem = styled.li`
 `;
 
 const SForm = styled.form`
-    background-color: white;
-    display: flex;
     box-sizing: border-box;
+    background-color: white;
+
+    flex:1;
+    display: flex;
     flex-direction:column;
-    flex:2;
-    margin-right:10px;
+    justify-content: space-between;
+
+    padding: 30px;
+    margin:0 10px 0;
     border-radius:5px;
 `;
 
 const SInput = styled.input`
-    background-color: pink;
-    border:none;
+    border:2px solid lightgrey;
     border-radius: 5px;;
-    width: 100%;
+    width: 95%;
     height: 50px;
 `;
 
@@ -118,15 +124,20 @@ const SButton = styled.button`
     border-radius: 5px;  
 `;
 
+const SCard = styled.div`
+    width: 320px;
+    display:flex;
+    flex-direction: column;
+`;
+
 const SCardHeader = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
-    flex:1;
     width: 320px;
     height: 60px;
     margin: 0 auto;
-    background-color: salmon;
+    background-color: #EAFBFF;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 `;
@@ -145,8 +156,18 @@ const SCardBody = styled.div `
     border-bottom-right-radius: 5px;
 `;
 
+const SModal = styled.div`
+    display: ${props => !props.displayModal && 'none'};
+    position: fixed;
+    padding-top:50%;
+    z-index:99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1,1,1,.9);
+`;
 
-export { SHeader, SBody, SFooter, 
+export { SHeader, SBody, SPart, SFooter, 
          SForm, SInput, SButton, 
-         SCardHeader, SCardBody,
+         SModal,
+         SCard, SCardHeader, SCardBody,
          SList, SListItem };

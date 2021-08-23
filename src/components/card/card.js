@@ -1,13 +1,13 @@
 import React from 'react';
-import { SCardHeader, SCardBody } from '../styles';
+import { SCard, SCardHeader, SCardBody } from '../styles';
 
 const Card = (props)=>{
 
     return (
-        <div>
+        <SCard>
             <SCardHeader>{props.city}</SCardHeader>
             <SCardBody>{props.temp}</SCardBody>
-        </div>
+        </SCard>
     );
 };
 

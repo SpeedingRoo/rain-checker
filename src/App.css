@@ -14,9 +14,8 @@ html, body{
   justify-content: center;
   text-align: center;
   margin: 0 auto;
-  padding: 30;
 
-position:relative;
-min-height:calc(100vh - 50px);
-padding-bottom:50px;
+  position:relative;
+  min-height:calc(100vh - 50px);
+  padding-bottom:50px;
 }
