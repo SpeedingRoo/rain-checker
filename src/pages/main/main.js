@@ -13,7 +13,7 @@ const MainPage = () => {
   const [weatherData, setWeatherData] = useState("");
   const [noMatch, setNoMatch] = useState({ display: "none", message: "" });
   const [showModal, setShowModal] = useState(false);
-  const APIkey = process.env.REACT_APP_weatherAPI;
+  const APIkey = process.env.REACT_APP_WEATHER_API;
   const APIcallUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`;
 
   function getInput(e) {
