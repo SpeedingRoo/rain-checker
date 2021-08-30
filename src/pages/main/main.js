@@ -3,12 +3,16 @@ import { SBody, SPart, SForm, SInput, SButton } from "../../components/styles";
 import axios from "axios";
 import Card from "../../components/card";
 import Modal from "../../components/modal";
+import beijing_img from "../../images/cities/beijing.png";
+import mel_img from "../../images/cities/melb.png";
+import syd_img from "../../images/cities/syd.png";
+import lond_img from '../../images/cities/lond.png';
 
 const MainPage = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState("");
   const [noMatch, setNoMatch] = useState({ display: "none", message: "" });
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const APIkey = "f620a018d0f4d826614d158f97a3f828";
   const APIcallUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APIkey}`;
 
@@ -20,28 +24,33 @@ const MainPage = () => {
     e.target.value = city;
   }
 
-  function popModal() {
-    setShowModal(true);
-    const msg = `fuck lightman SOB |  ${showModal ? 'true':'false'}`;
-    window.alert(msg);
-  }
-  async function myOnClick() {
-      await setTimeout(() => {
-        axios({
+  const [json_w_data, setJson_w_data]= useState({});
+
+  async function clickForWeatherData(e) {
+      await setTimeout(
+        () => {
+          axios({
           method: "get",
           url: APIcallUrl,
-        })
+          })
           .then((res) => {
+            setJson_w_data(res.data);
             setWeatherData(res.data.main.temp - 273.15);
             console.log(res);
           })
           .catch((err) => {
-            window.alert(`Show Modal is ${showModal}`);
-            popModal();
+            // window.alert(`1.showModal is ${showModal}`);
+            setShowModal(true);
+            // window.alert(`2.showModal is ${showModal}`);
+            // window.alert(`a. ${noMatch.message}`);
             setNoMatch({ display: "block", message: `The city doesn't exists!` });
+            // window.alert(`b. ${noMatch.message}`);
             console.log(err);
           });
-      }, 100);
+        }
+        , 100);
+
+      e.preventDefault();
   }
 
   // function displayError() {
@@ -51,28 +60,37 @@ const MainPage = () => {
   return (
     <SBody className="main-page">
       <SPart vertical={false}>
-        <SForm>
+        <SForm onSubmit={clickForWeatherData}>
           <SInput
             type="text"
             defaultValue="start typing here"
             onChange={getInput}
             onFocus={clearField}
           />
-          <SButton type="button" onClick={myOnClick}>
+          <SButton type="submit">
             Check
           </SButton>
         </SForm>
       </SPart>
       <SPart vertical={false}>
-        <h1 style={{ display: noMatch.display }}>{noMatch.message}</h1>
-        <Modal message={noMatch.message} shown={true}/>
-      </SPart>
-      <SPart vertical={true}>
-        <Card city="Beijing" temp="-10" />
-        <Card city="London" temp="5" />
+        <Card city="Beijing" temp="-10" bg_url={beijing_img}/>
+        <Card city="Melbourne" temp="15" bg_url={mel_img}/>
+        <Card city="Sydney" temp="22" bg_url={syd_img}/>
+        <Card city="London" temp="20" bg_url={lond_img}/>
       </SPart>
       <SPart vertical={false}>
         <p>the weather data of <span>{city.toUpperCase()}</span> is {weatherData}</p>
+      </SPart>
+      <SPart>
+        <section>
+          JSON weather data is: {JSON.stringify(json_w_data.main)}
+        </section>
+      </SPart>
+      <SPart vertical={false}>
+        <h1 style={{ display: noMatch.display }}>{noMatch.message}</h1>
+      </SPart>
+      <SPart>
+        <Modal message={noMatch.message} shown={showModal}/>
       </SPart>
     </SBody>
   );

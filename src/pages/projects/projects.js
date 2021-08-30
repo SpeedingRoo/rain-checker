@@ -1,38 +1,38 @@
 import React from "react";
-import { SBody, SCardHeader } from "../../components/styles";
+import { SBody, SPart, SButton, SH1 } from "../../components/styles";
+import Card from '../../components/card';
+import ProjectList from "../../components/project_list/project_list";
 
 const ProjectsPage = () => {
+
+  const project_URL = "https://www.reactjs.org"
+
+  const addProject = ()=>{
+    return(
+        <a href={project_URL}>
+          <Card roundEdge={true}>
+            <h2>
+              The ... Project
+            </h2>
+          </Card>
+        </a>
+    )
+  }
+
   return (
     <SBody>
-      <h1> Projects I have done is none </h1>
-      <a href="https://github.com/SpeedingRoo">
-        <SCardHeader>
-          <h2>
-            The <span>MiniLuck</span> Project
-          </h2>
-        </SCardHeader>
-      </a>
-      <SCardHeader>
-        <h2>
-          <a href="https://github.com/SpeedingRoo">
-            The <span>DrivePass</span> Project
-          </a>
-        </h2>
-      </SCardHeader>
-      <SCardHeader>
-        <h2>
-          <a href="https://github.com/SpeedingRoo">
-            The <span>AmberMoments Studio</span> Project
-          </a>
-        </h2>
-      </SCardHeader>
-      <SCardHeader>
-        <h2>
-          <a href="https://github.com/SpeedingRoo">
-            The <span>unknown</span> Project
-          </a>
-        </h2>
-      </SCardHeader>
+      <SH1 ems='2.6' font='carter_one'> Projects I have done is none </SH1>
+
+      <ProjectList  />
+
+      <SPart>
+        <SButton type='button' onClick={addProject}>
+          Add a New Project
+        </SButton>
+        <SButton type='button'>
+          Remove a Project
+        </SButton>
+      </SPart>
     </SBody>
   );
 };

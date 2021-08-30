@@ -1,55 +1,72 @@
 import styled from 'styled-components';
 import '../util/fonts/fonts.css';
+import pointer_url from '../images/base64_img';
+import beijing_bg from '../images/cities/beijing.png';
+
+
+const fonts = {
+    'bungee_outline': `'Bungee Outline', cursive`,
+    'carter_one': `'Carter One', cursive`,
+};
 
 const SHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    min-width:720%;
+  
+    width: 100%;
     height: 300px;
-    margin:0;
-    
+    margin: 0;
+    overflow-wrap: normal;
+  
     color: white;
-    font-family: 'Zen Loop', cursive;
-    background: rgb(12,8,70);
-    background: linear-gradient(163deg, rgba(12,8,70,1) 0%, rgba(22,22,125,1) 28%, rgba(23,67,184,1) 58%, rgba(0,212,255,1) 100%);
+    font-family: ${(props) => fonts[props.font]};
+    background: rgb(1, 39, 59);
+    background: linear-gradient(
+      180deg,
+      rgba(1, 39, 59, 1) 0%,
+      rgba(14, 80, 159, 1) 31%,
+      rgba(12, 95, 180, 1) 54%,
+      rgba(135, 206, 250, 1) 100%
+    );
+`;
+
+const SH1 = styled.h1`
+    height: 100px;
+    width: 100%;
+    flex:1;
+
+    font-family: ${props=> fonts[props.font]};
+    font-size: ${props => `${props.ems}rem`};
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const SBody = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex:1;//so that the entire SBody component can expand to the whole father container
-
+    flex: 1; //so that the entire SBody component can expand to the whole father container
+  
     padding: 20px;
-
-    width:720px;
-    background: rgb(1,217,255);
-    background: linear-gradient(180deg, rgba(1,217,255,1) 0%, rgba(82,189,228,1) 25%, rgba(40,183,213,1) 50%, rgba(0,138,222,1) 75%, rgba(23,67,184,1) 100%);
-    
-    & a {
-        display: flex;
-        justify-content: start;
-        flex-wrap: wrap;
-        padding: 10px 0 10px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid green;
-        background-color: red;
-    }
-
-    border: 2px solid rgba(0,212,255,1);
+  
+    width: 720px;
+    background: rgb(1, 39, 59);
+    background: linear-gradient(
+      0deg,
+      rgba(1, 39, 59, 1) 0%,
+      rgba(46, 89, 140, 1) 31%,
+      rgba(74, 148, 223, 1) 68%,
+      rgba(135, 206, 250, 1) 100%
+    );
+    /* border: 2px solid rgba(0, 212, 255, 1); */
     border-radius: 5px;
-`;
-
-const SPart = styled.section`
-    display: flex;
-    flex-direction: ${props=>props.vertical? 'column' : 'row'};
-    justify-content: center;
-    align-items: center;
-    margin: 10px 0 10px;
-    border: 1px solid black;
+  
+    & a {
+      text-decoration: none;
+    }
 `;
 
 const SFooter = styled.footer`
@@ -61,10 +78,22 @@ const SFooter = styled.footer`
     justify-content: center;
     align-items: center;
     margin-top: auto;
-    color: red;
-    background-color: rgb;
+    color: black;
+
     font-family: 'Zen Loop', cursive;
     font-family: 'Zen Tokyo Zoo', cursive;
+    font-size: 1.3rem;
+`;
+
+const SPart = styled.section`
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: ${props=>props.vertical? 'column' : 'row'};
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0 10px;
+    /* border: 1px solid black; */
+    min-height: 150px;
 `;
 
 const SList = styled.ul`
@@ -83,51 +112,66 @@ const SList = styled.ul`
 
 const SListItem = styled.li`
     display: inline-block;
-    width: 87px;
-    height: 35px;
-
+    box-sizing: border-box;
     text-align: center;
-    padding-top: 15px;
+
+    width: 87px;
+    height: 55px;
+
+    padding: 15px 0 15px;
     /* 把导航列表内每个链接文字的下划线去掉 */
     & > a {
         text-decoration: none;
         font-weight: bold;
         word-break: keep-all;
         color: rgba(0,138,222,1);
+        cursor: url(${pointer_url}) 14 14, crosshair;
+    }
+
+    &:hover {
+        border-bottom: 3px solid rgba(33, 72, 150, 1);
+        cursor: url(${pointer_url}) 14 14, crosshair;
     }
 `;
 
 const SForm = styled.form`
     box-sizing: border-box;
     background-color: white;
-
     flex:1;
-    display: flex;
-    flex-direction:column;
-    justify-content: space-between;
 
     padding: 30px;
-    margin:0 10px 0;
     border-radius:5px;
 `;
 
 const SInput = styled.input`
-    border:2px solid lightgrey;
-    border-radius: 5px;;
-    width: 95%;
+
+    width: 70%;
     height: 50px;
+
+    border:2px solid lightgrey;
+    border-radius: 5px;
 `;
 
 const SButton = styled.button`
-    width:50px;
+    
+    padding:0 20px 0;
     height: 50px;
     border-radius: 5px;  
 `;
 
 const SCard = styled.div`
     width: 320px;
+    min-height: 240px;
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    margin: 10px 0px 30px;
+
+    border-radius: ${props=>props.roundEdge? '5px' : '0'};
+
+    &:hover{
+        color: pink;
+    }
 `;
 
 const SCardHeader = styled.div `
@@ -135,25 +179,49 @@ const SCardHeader = styled.div `
     justify-content: center;
     align-items: center;
     width: 320px;
-    height: 60px;
+    height: 160px;
     margin: 0 auto;
     background-color: #EAFBFF;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+
+    background-image: url(${props=>props.background});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    box-shadow: white 2px -1px 5px, -2px -1px 5px white;
+
+    color:white;
+    font-family: 'Racing Sans One', cursive;
+    font-size: 2rem;
+    text-shadow: 6px 2px 10px black, -5px 2px 10px black;
 `;
 
 const SCardBody = styled.div `
+    box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex:1;
+    
     width: 320px;
-    height: 120px;
-    padding: 0 ;
+    height: 700px;
+    padding: 5px ;
     margin: 0 auto;
-    background-color: pink;
+
+    box-shadow: black 2px 3px 5px, -2px 3px 9px black;
+
+    background-color: rgb(255, 255, 255);
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
+    & span {
+        border-left: 1px solid black;
+        padding-left: 5px;
+        margin-top: 9px;
+        margin-left: 5px;
+    }
 `;
 
 const SModal = styled.div`
@@ -169,5 +237,6 @@ const SModal = styled.div`
 export { SHeader, SBody, SPart, SFooter, 
          SForm, SInput, SButton, 
          SModal,
+         SH1,
          SCard, SCardHeader, SCardBody,
          SList, SListItem };

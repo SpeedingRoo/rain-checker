@@ -1,10 +1,10 @@
 import React from 'react';
-import { SHeader } from '../styles';
+import { SHeader, SH1 } from '../styles';
 
 const Header = () => {
     return (
-        <SHeader>
-            <h1>THE Rain Checker</h1>
+        <SHeader font='bungee_outline'>
+            <SH1 ems='4.7'>THE Rain Checker</SH1>
         </SHeader>
     );
 };
