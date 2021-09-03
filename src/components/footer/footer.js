@@ -4,7 +4,7 @@ import { SFooter } from '../styles';
 const Footer = () => {
     return (
     <SFooter>
-        Copyright Reserved, WANGDOM Pty Ltd . {new Date().getFullYear()}
+        copyright reserved, WANGDOM pty ltd . {new Date().getFullYear()}
     </SFooter>
     )
 }

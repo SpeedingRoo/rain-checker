@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ProjectItem from '../project_item';
 
 const ProjectList = ()=>{
@@ -6,7 +6,7 @@ const ProjectList = ()=>{
     const href='https://github.com/SpeedingRoo';
 
     const projects = [
-        ['1','MiniLuck',''],
+        ['1','MiniLuck'],
         ['2','DrivePass'],
         ['3','MoatTracker'],
         ['4','AmberMoments-Studio'],

@@ -3,8 +3,8 @@ import { SHeader, SH1 } from '../styles';
 
 const Header = () => {
     return (
-        <SHeader font='bungee_outline'>
-            <SH1 ems='4.7'>THE Rain Checker</SH1>
+        <SHeader font='zefani'>
+            <SH1 ems='4'>THE RAIN CHECKER</SH1>
         </SHeader>
     );
 };

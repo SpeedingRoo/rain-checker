@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import '../util/fonts/fonts.css';
 import pointer_url from '../images/base64_img';
-import beijing_bg from '../images/cities/beijing.png';
-
 
 const fonts = {
     'bungee_outline': `'Bungee Outline', cursive`,
     'carter_one': `'Carter One', cursive`,
+    'zefani': `Zefani`,
+    'game_over': `Game Over`,
 };
 
 const SHeader = styled.header`
@@ -22,14 +22,14 @@ const SHeader = styled.header`
   
     color: white;
     font-family: ${(props) => fonts[props.font]};
-    background: rgb(1, 39, 59);
-    background: linear-gradient(
+    background: rgb(135, 206, 250);
+    /* background: linear-gradient(
       180deg,
       rgba(1, 39, 59, 1) 0%,
       rgba(14, 80, 159, 1) 31%,
       rgba(12, 95, 180, 1) 54%,
       rgba(135, 206, 250, 1) 100%
-    );
+    ); */
 `;
 
 const SH1 = styled.h1`
@@ -82,7 +82,7 @@ const SFooter = styled.footer`
 
     font-family: 'Zen Loop', cursive;
     font-family: 'Zen Tokyo Zoo', cursive;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 `;
 
 const SPart = styled.section`

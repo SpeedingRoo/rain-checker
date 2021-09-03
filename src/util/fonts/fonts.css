@@ -3,3 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+
+@font-face {
+    font-family: 'Zefani';
+    src: url(./Zefani_Demo/Zefani_Demo/Zefani_Uppercase_Demo-Regular.otf),
+         url(./game_over/game_over.ttf);
+}
+
+@font-face {
+    font-family: 'Game Over';
+    src: 
+}

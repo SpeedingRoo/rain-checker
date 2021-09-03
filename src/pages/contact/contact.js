@@ -1,10 +1,14 @@
 import React from 'react';
-import { SBody } from '../../components/styles';
+import { SBody, SPart, SH1 } from '../../components/styles';
 
 const ContactPage = ()=>{
     return(
         <SBody>
-            <p> Contact Me </p>
+            <SPart vertical={false}>
+                <SH1> 
+                    Contact Me
+                </SH1>
+            </SPart>
         </SBody>
     );
 }

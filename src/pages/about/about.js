@@ -1,14 +1,14 @@
 import React from 'react';
-import { SBody } from '../../components/styles';
+import { SBody, SPart, SH1 } from '../../components/styles';
 
 const AboutPage = () => {
     return (
         <SBody>
-            <section>
-                <p>
+            <SPart vertical={false}>
+                <SH1>
                     This is a paragraph about the About page
-                </p>
-            </section>
+                </SH1>
+            </SPart>
         </SBody>
     );
 };
