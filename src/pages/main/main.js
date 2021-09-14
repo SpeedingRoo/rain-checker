@@ -21,10 +21,10 @@ const MainPage = () => {
   const [londonWeather, setLondonWeather] = useState([]);
 
   const defaultCities = [
-    ["beijing", setBeijingWeather],
-    ["Melbourne", setMelbourneWeather],
-    ["Sydney", setSydneyWeather],
-    ["london", setLondonWeather],
+    ['beijing', setBeijingWeather,'CN'],
+    ['Melbourne', setMelbourneWeather,'AU'],
+    ['Sydney', setSydneyWeather,'AU'],
+    ['london', setLondonWeather,'GB'],
   ];
 
   const APIkey = 'f620a018d0f4d826614d158f97a3f828';
@@ -43,7 +43,7 @@ const MainPage = () => {
     setTimeout(
       ()=>{
         setTargetCityWeather(null);
-        e.target.value = targetCity;
+        e.target.value = '';
       }
       ,300)
   };
@@ -61,10 +61,10 @@ const MainPage = () => {
     .catch(
       err => {
         err.response ?
-        window.alert(err.response.message)
+        window.alert(err.response.data.message)
         :
-        window.alert(err.message);
-        // console.log(err.message);
+        window.alert(err.response.data.message);
+  
       }
     )
   };
@@ -72,9 +72,9 @@ const MainPage = () => {
   useEffect(
       ()=>{
           setTimeout(()=>{
-            for(let i=0; i<defaultCities.length; i++){
-            getCityWeatherData(defaultCities[i][0],defaultCities[i][1]);
-            }
+            defaultCities.map((item,key) => {
+              getCityWeatherData(item[0], item[1]);
+            });
           },1);
       }
   ,[]);
@@ -92,7 +92,7 @@ const MainPage = () => {
     <SBody className="main-page">
       <SPart vertical={false}>
         <h2>
-          {targetCityWeather!==null 
+          {targetCityWeather
             ? <div>
               The temperature of {targetCity.toUpperCase()} is {targetCityWeather[0]} &#8451;
               <img src={targetCityWeather[1]} alt='weather symbol'/>
@@ -113,6 +113,7 @@ const MainPage = () => {
           </SButton>
         </SForm>
       </SPart>
+      <div className='modal' onError={null}></div>
       <SPart vertical={false}>
         <Card city="Beijing" temp={beijingWeather[0]} weatherIcon={beijingWeather[1]} bg_url={beijing_img}/>
         <Card city="Melbourne" temp={melbourneWeather[0]} weatherIcon={melbourneWeather[1]} bg_url={mel_img}/>
@@ -122,7 +123,7 @@ const MainPage = () => {
       <SPart vertical={false}>
         <h1 style={{ display: noMatch.display }}>{noMatch.message}</h1>
       </SPart>
-      <SPart>
+      <SPart vertical={false}>
         <Modal message={noMatch.message} shown={showModal}/>
       </SPart>
     </SBody>

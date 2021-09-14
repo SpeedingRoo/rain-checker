@@ -36,12 +36,14 @@ const SH1 = styled.h1`
     height: 100px;
     width: 100%;
     flex:1;
-
-    font-family: ${props=> fonts[props.font]};
-    font-size: ${props => `${props.ems}rem`};
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-family: ${props=> fonts[props.font]};
+    font-size: ${props => `${props.ems}rem`};
+
+    text-shadow: ${props=>props.shadow? '2px 2px 6px black': null};
 `;
 
 const SBody = styled.main`
@@ -61,11 +63,12 @@ const SBody = styled.main`
       rgba(74, 148, 223, 1) 68%,
       rgba(135, 206, 250, 1) 100%
     );
-    /* border: 2px solid rgba(0, 212, 255, 1); */
     border-radius: 5px;
   
     & a {
       text-decoration: none;
+      color: white;
+      font-family: ${fonts.carter_one};
     }
 `;
 
@@ -87,13 +90,17 @@ const SFooter = styled.footer`
 
 const SPart = styled.section`
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: ${props=>props.vertical? 'column' : 'row'};
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    flex-direction: ${props=>props.vertical? 'column' : 'row'};
     margin: 10px 0 10px;
-    /* border: 1px solid black; */
     min-height: 150px;
+
+    & h2{
+        color: rgb(0,0,96);
+    }
+
 `;
 
 const SList = styled.ul`
@@ -106,8 +113,6 @@ const SList = styled.ul`
     width:720px;
     margin:10;
     padding: 0;
-
-    border:1px solid yellow;
 `;
 
 const SListItem = styled.li`
@@ -125,38 +130,59 @@ const SListItem = styled.li`
         font-weight: bold;
         word-break: keep-all;
         color: rgba(0,138,222,1);
-        cursor: url(${pointer_url}) 14 14, crosshair;
+        cursor: url(${null}) 14 14, pointer;
+        /* pointer_url */
     }
 
     &:hover {
         border-bottom: 3px solid rgba(33, 72, 150, 1);
-        cursor: url(${pointer_url}) 14 14, crosshair;
+        cursor: url(${null}) 14 14, pointer;
+        /* pointer_url */
     }
+`;
+
+const SUl = styled.ul`
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: ${prop=>prop.vertical? "column":"row"};
 `;
 
 const SForm = styled.form`
     box-sizing: border-box;
-    background-color: white;
     flex:1;
-
     padding: 30px;
-    border-radius:5px;
 `;
 
 const SInput = styled.input`
-
     width: 70%;
     height: 50px;
+    margin-right: 20px;
+    margin-left: -5px;
+    border:none;
+    border-radius: 50px;
+    text-align: center;
 
-    border:2px solid lightgrey;
-    border-radius: 5px;
+    &:focus{
+        box-shadow: rgb(3, 140, 252) 2px 3px 5px, -2px -2px 5px rgb(3, 140, 252);
+        outline:none;
+    }
+
 `;
 
 const SButton = styled.button`
     
     padding:0 20px 0;
     height: 50px;
-    border-radius: 5px;  
+    border-radius: 50px;  
+    background-color: white;
+    border:none;
+    font-family: ${fonts.carter_one};
+    color: rgb(0,0,96);
+
+    &:hover{
+        box-shadow: rgb(0, 43, 97) 2px 3px 5px, -2px -2px 5px rgb(3, 140, 252);
+    }
 `;
 
 const SCard = styled.div`
@@ -169,8 +195,11 @@ const SCard = styled.div`
 
     border-radius: ${props=>props.roundEdge? '5px' : '0'};
 
+    font-size: ${prop=>`${prop.ems}rem`};
+
     &:hover{
-        color: pink;
+        color: rgb(51, 130, 255);
+        text-shadow: 1px 1px white, 1px -1px white, -1px -1px white;
     }
 `;
 
@@ -237,6 +266,6 @@ const SModal = styled.div`
 export { SHeader, SBody, SPart, SFooter, 
          SForm, SInput, SButton, 
          SModal,
-         SH1,
+         SH1, 
          SCard, SCardHeader, SCardBody,
-         SList, SListItem };
+         SList, SListItem, SUl };

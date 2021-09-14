@@ -1,20 +1,14 @@
 import React from 'react';
 import ProjectItem from '../project_item';
+import { SUl } from '../styles';
 
-const ProjectList = ()=>{
+const ProjectList = (props)=>{
     
     const href='https://github.com/SpeedingRoo';
 
-    const projects = [
-        ['1','MiniLuck'],
-        ['2','DrivePass'],
-        ['3','MoatTracker'],
-        ['4','AmberMoments-Studio'],
-    ];
-
     return(
-        <ul>
-            {projects.map(
+        <SUl vertical={false}>
+            {props.projects.map(
                 (i) => {
                     return (
                       <li key={i[0]}>
@@ -23,7 +17,7 @@ const ProjectList = ()=>{
                     );
                 }
             )}
-        </ul>
+        </SUl>
     );
 }
 

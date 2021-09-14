@@ -5,9 +5,7 @@ const ProjectItem = (props)=>{
 
     return (
       <a href={props.href}>
-        <SPart>
-          <SCard>{props.value}</SCard>
-        </SPart>
+          <SCard ems='2'>{props.value}</SCard>
       </a>
     );
 }
